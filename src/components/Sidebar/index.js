@@ -73,6 +73,7 @@ const Sidebar = (props) => {
             <List>
                 <div className={classes.closeButtonWrapper}>
                     <IconButton
+                        color="textPrimary"
                         onClick={handleDrawerToggle}
                     >
                         <CloseIcon className={classes.closeButton} />

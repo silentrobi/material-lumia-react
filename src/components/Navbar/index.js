@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Hidden from '@material-ui/core/Hidden';
@@ -7,6 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Button, Link } from '@material-ui/core';
+import Brightness7Icon from '@material-ui/icons/Brightness7';
+import Brightness4Icon from '@material-ui/icons/Brightness4';
+import { ThemeContext } from '../../context/context';
 
 const useStyles = makeStyles((theme) => ({
     menuIcon: {
@@ -33,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: theme.spacing(6),
         '&:hover': {
             transition: 'all 0.2s ease-in-out',
-            background: theme.palette.background.default
+            background: theme.palette.text.primary
         }
     }
 }));
@@ -41,11 +44,13 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = (props) => {
     const classes = useStyles();
     const { handleDrawerToggle } = props;
+    const themeContext = useContext(ThemeContext);
+
     return (
         <>
-            <AppBar position="static" color="transparent">
+            <AppBar position="static" color="inherit">
                 <Toolbar>
-                    <Typography variant="h6" className={classes.title}>
+                    <Typography variant="h6" color="textPrimary" className={classes.title}>
                         Token
                     </Typography>
                     <Hidden xsDown={true}>
@@ -59,9 +64,16 @@ const Navbar = (props) => {
                         </Button>
                     </Hidden>
                     <IconButton
+                        onClick={themeContext.handleDarkModeToggle}
+                    >
+                        {themeContext.darkMode ?
+                            <Brightness4Icon />
+                            : <Brightness7Icon />}
+                    </IconButton>
+                    <IconButton
                         edge="start"
                         className={classes.menuIcon}
-                        color="inherit"
+                        color="textPrimary"
                         aria-label="menu"
                         onClick={handleDrawerToggle}>
                         <MenuIcon />

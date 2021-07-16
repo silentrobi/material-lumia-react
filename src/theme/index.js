@@ -1,20 +1,57 @@
-import { createTheme } from '@material-ui/core/styles';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import { Component } from 'react';
 
-const theme = createTheme({
-    palette:{
-        primary:{
+const lightTheme = createTheme({
+    palette: {
+        primary: {
             main: '#01bf71'
         },
-        secondary:{
+        secondary: {
             main: '#ffc400'
         },
-        white: '#fff'
+        background: '#fff',
+        type: 'light'
     },
-    typography:{
+    typography: {
         fontFamily: [
             'Roboto'
         ].join(',')
     }
 });
 
-export default theme;
+const darkTheme = createTheme({
+    palette: {
+        primary: {
+            main: '#01bf71'
+        },
+        secondary: {
+            main: '#fffff'
+        },
+        type: 'dark',
+        background: {
+            default: '#000',
+            paper: '#000'
+        },
+        text: {
+            primary: '#FFFFFF',
+            secondary: '#fafafa'
+        }
+    },
+    typography: {
+        fontFamily: [
+            'Roboto'
+        ].join(',')
+    }
+});
+
+const Theme = (props) => {
+    const { children, darkMode } = props;
+    const defaultTheme = darkMode ? darkTheme : lightTheme;
+    return <ThemeProvider theme={defaultTheme}>{children}</ThemeProvider>;
+};
+
+export const withTheme = (Component)=>{
+
+}
+
+export { Theme, lightTheme, darkTheme };
