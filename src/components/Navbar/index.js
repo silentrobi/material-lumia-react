@@ -9,8 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Button, Link } from '@material-ui/core';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
-import { useChangeTheme } from '../../context/themeDispatchContext';
-import useTheme from '@material-ui/core/styles/useTheme';
+import ThemeContext from '../../context/Context';
 
 const useStyles = makeStyles((theme) => ({
     menuIcon: {
@@ -45,9 +44,8 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = (props) => {
     const classes = useStyles();
     const { handleDrawerToggle } = props;
-    //const theme = useTheme();
-    //const changeTheme = useChangeTheme();
-
+    const { isDark, toggleDarkMode } = useContext(ThemeContext);
+    console.log(isDark, toggleDarkMode);
     return (
         <>
             <AppBar position="static" color="inherit">
@@ -66,16 +64,16 @@ const Navbar = (props) => {
                         </Button>
                     </Hidden>
                     <IconButton
-                        //onClick={changeTheme}
+                        onClick={toggleDarkMode}
                     >
-                        {/* {theme.palette.type === 'dark' ?
-                            <Brightness4Icon />
-                            : <Brightness7Icon />} */}
+                        {isDark ?
+                            <Brightness7Icon color="primary" />
+                            : <Brightness4Icon color="error" />}
                     </IconButton>
                     <IconButton
                         edge="start"
                         className={classes.menuIcon}
-                        color="textPrimary"
+                        color="inherit"
                         aria-label="menu"
                         onClick={handleDrawerToggle}>
                         <MenuIcon />

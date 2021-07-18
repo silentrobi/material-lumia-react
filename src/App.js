@@ -1,16 +1,55 @@
-import { useContext, useReducer, useState } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Home } from './pages';
 import { lightTheme, darkTheme } from './theme';
-import Theme, { ThemeDispatchContext } from './context/themeDispatchContext';
 import './App.css';
-import { ThemeProvider } from '@material-ui/core';
+import { createTheme, ThemeProvider } from '@material-ui/core';
+import ThemeContext from './context/Context';
 function App() {
+  const [isDark, setIsDark] = useState(false);
+  const toggleDarkMode = () => {
+    if (isDark) {
+      localStorage.setItem("preferred-theme", "light")
+      setIsDark(false)
+    } else {
+      localStorage.setItem("preferred-theme", "dark")
+      setIsDark(true)
+    }
+  }
+
+  const memoizedTheme =
+    useMemo(() => {
+      if (isDark) {
+        return createTheme({
+          ...darkTheme
+        });
+      }
+      return createTheme({
+        ...lightTheme
+      });
+    }, [isDark]);
+
+  useEffect(() => {
+    const theme = localStorage.getItem("preferred-theme")
+    if (theme) {
+      const themePreference = localStorage.getItem("preferred-theme")
+      if (themePreference === "dark") {
+        setIsDark(true)
+      } else {
+        setIsDark(false)
+      }
+    } else {
+      localStorage.setItem("preferred-theme", "light")
+      setIsDark(true)
+    }
+  }, []);
 
   return (
     <>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeContext.Provider value={{ isDark, toggleDarkMode }}>
+        <ThemeProvider theme={memoizedTheme}>
           <Home />
-      </ThemeProvider>
+        </ThemeProvider>
+      </ThemeContext.Provider >
     </>
   );
 }
