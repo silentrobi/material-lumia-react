@@ -67,16 +67,15 @@ const Navbar = (props) => {
                         onClick={toggleDarkMode}
                     >
                         {isDark ?
-                            <Brightness7Icon color="primary" />
-                            : <Brightness4Icon color="error" />}
+                            <Brightness7Icon color="inherit" />
+                            : <Brightness4Icon color="inherit" />}
                     </IconButton>
                     <IconButton
                         edge="start"
                         className={classes.menuIcon}
-                        color="inherit"
                         aria-label="menu"
                         onClick={handleDrawerToggle}>
-                        <MenuIcon />
+                        <MenuIcon color="inherit"/>
                     </IconButton>
                 </Toolbar>
             </AppBar>
