@@ -1,5 +1,5 @@
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-import { Component } from 'react';
+import { useState } from 'react';
 
 const lightTheme = createTheme({
     palette: {
@@ -9,7 +9,13 @@ const lightTheme = createTheme({
         secondary: {
             main: '#ffc400'
         },
-        background: '#fff',
+        custom:{
+            white: '#fff'
+        },
+        background: {
+            default: '#fff',
+            paper: '#fff'
+        },
         type: 'light'
     },
     typography: {
@@ -27,11 +33,14 @@ const darkTheme = createTheme({
         secondary: {
             main: '#fffff'
         },
-        type: 'dark',
         background: {
             default: '#000',
             paper: '#000'
         },
+        custom:{
+            white: '#fff'
+        },
+        type: 'dark',
         text: {
             primary: '#FFFFFF',
             secondary: '#fafafa'
@@ -44,14 +53,4 @@ const darkTheme = createTheme({
     }
 });
 
-const Theme = (props) => {
-    const { children, darkMode } = props;
-    const defaultTheme = darkMode ? darkTheme : lightTheme;
-    return <ThemeProvider theme={defaultTheme}>{children}</ThemeProvider>;
-};
-
-export const withTheme = (Component)=>{
-
-}
-
-export { Theme, lightTheme, darkTheme };
+export { lightTheme, darkTheme };

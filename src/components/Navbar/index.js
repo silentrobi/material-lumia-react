@@ -9,7 +9,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Button, Link } from '@material-ui/core';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
-import { ThemeContext } from '../../context/context';
+import { useChangeTheme } from '../../context/themeDispatchContext';
+import useTheme from '@material-ui/core/styles/useTheme';
 
 const useStyles = makeStyles((theme) => ({
     menuIcon: {
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: theme.spacing(6),
         '&:hover': {
             transition: 'all 0.2s ease-in-out',
-            background: theme.palette.text.primary
+            background: theme.palette.custom.white
         }
     }
 }));
@@ -44,7 +45,8 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = (props) => {
     const classes = useStyles();
     const { handleDrawerToggle } = props;
-    const themeContext = useContext(ThemeContext);
+    //const theme = useTheme();
+    //const changeTheme = useChangeTheme();
 
     return (
         <>
@@ -64,11 +66,11 @@ const Navbar = (props) => {
                         </Button>
                     </Hidden>
                     <IconButton
-                        onClick={themeContext.handleDarkModeToggle}
+                        //onClick={changeTheme}
                     >
-                        {themeContext.darkMode ?
+                        {/* {theme.palette.type === 'dark' ?
                             <Brightness4Icon />
-                            : <Brightness7Icon />}
+                            : <Brightness7Icon />} */}
                     </IconButton>
                     <IconButton
                         edge="start"

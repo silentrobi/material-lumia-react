@@ -3,9 +3,7 @@ import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar';
 
 const Home = () => {
-
     const [mobileOpen, setMobileOpen] = useState(false);
-
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };

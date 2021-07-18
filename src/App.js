@@ -1,24 +1,16 @@
-import { useState } from 'react';
+import { useContext, useReducer, useState } from 'react';
 import { Home } from './pages';
-import { Theme } from './theme';
-import { ThemeContext } from './context/context';
+import { lightTheme, darkTheme } from './theme';
+import Theme, { ThemeDispatchContext } from './context/themeDispatchContext';
 import './App.css';
+import { ThemeProvider } from '@material-ui/core';
 function App() {
-  //const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const [darkMode, setDarkMode] = useState(false);
-
-  const handleDarkModeToggle = () => {
-    console.log("cscs");
-    setDarkMode(!darkMode);
-  };
 
   return (
     <>
-      <Theme darkMode={darkMode}>
-        <ThemeContext.Provider value={{ darkMode, handleDarkModeToggle }}>
+      <ThemeProvider theme={darkTheme}>
           <Home />
-        </ThemeContext.Provider>
-      </Theme>
+      </ThemeProvider>
     </>
   );
 }
