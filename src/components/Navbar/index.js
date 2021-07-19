@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: theme.spacing(6),
         '&:hover': {
             transition: 'all 0.2s ease-in-out',
-            background: theme.palette.custom.white
+            background: theme.palette.common.white
         }
     }
 }));
@@ -50,7 +50,7 @@ const Navbar = (props) => {
         <>
             <AppBar position="static" color="inherit">
                 <Toolbar>
-                    <Typography variant="h6" color="textPrimary" className={classes.title}>
+                    <Typography variant="h4" color="textPrimary" className={classes.title}>
                         Token
                     </Typography>
                     <Hidden xsDown={true}>

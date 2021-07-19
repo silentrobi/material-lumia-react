@@ -1,6 +1,6 @@
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { useState } from 'react';
-
+import typography from './typography';
 const lightTheme = createTheme({
     palette: {
         primary: {
@@ -18,11 +18,7 @@ const lightTheme = createTheme({
         },
         type: 'light'
     },
-    typography: {
-        fontFamily: [
-            'Roboto'
-        ].join(',')
-    }
+    typography
 });
 
 const darkTheme = createTheme({
@@ -46,11 +42,7 @@ const darkTheme = createTheme({
             secondary: '#fafafa'
         }
     },
-    typography: {
-        fontFamily: [
-            'Roboto'
-        ].join(',')
-    }
+    typography
 });
 
 export { lightTheme, darkTheme };

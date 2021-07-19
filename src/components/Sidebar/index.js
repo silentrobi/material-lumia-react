@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: theme.spacing(6),
         '&:hover': {
             transition: 'all 0.2s ease-in-out',
-            background: theme.palette.custom.white
+            background: theme.palette.common.white
         }
     },
     buttonWrapper: {
