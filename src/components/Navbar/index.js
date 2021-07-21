@@ -47,6 +47,9 @@ const useStyles = makeStyles((theme) => ({
     },
     initAppbarElement:{
        color: theme.palette.common.white
+    },
+    t:{
+        backgroundColor: '#fff'
     }
 }));
 
@@ -83,10 +86,11 @@ const Navbar = (props) => {
                     </Hidden>
                     <IconButton
                         onClick={toggleDarkMode}
+                        className={classNames({[classes.initAppbarElement]: !showAppBar})} 
                     >
                         {isDark ?
-                            <Brightness7Icon color="inherit" />
-                            : <Brightness4Icon color="inherit" />}
+                            <Brightness7Icon color="inherit"/>
+                            : <Brightness4Icon color="inherit"  />}
                     </IconButton>
                     <IconButton
                         edge="start"
