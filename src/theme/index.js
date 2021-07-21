@@ -16,7 +16,11 @@ const lightTheme = createTheme({
             default: '#fff',
             paper: '#fff'
         },
-        type: 'light'
+        type: 'light',
+        text: {
+            primary: '#000',
+            secondary: '#000'
+        }
     },
     typography
 });
@@ -31,7 +35,7 @@ const darkTheme = createTheme({
         },
         background: {
             default: '#000',
-            paper: '#000'
+            paper: '000'
         },
         custom:{
             white: '#fff'
@@ -39,7 +43,7 @@ const darkTheme = createTheme({
         type: 'dark',
         text: {
             primary: '#FFFFFF',
-            secondary: '#fafafa'
+            secondary: '#000'
         }
     },
     typography

@@ -45,13 +45,12 @@ const Navbar = (props) => {
     const classes = useStyles();
     const { handleDrawerToggle } = props;
     const { isDark, toggleDarkMode } = useContext(ThemeContext);
-    console.log(isDark, toggleDarkMode);
     return (
         <>
-            <AppBar position="static" color="inherit">
+            <AppBar position="fixed" color="default">
                 <Toolbar>
                     <Typography variant="h4" color="textPrimary" className={classes.title}>
-                        Token
+                        Lumia
                     </Typography>
                     <Hidden xsDown={true}>
                         {['About', 'Discover', 'Services', 'Sign Up'].map((text) => (

@@ -2,7 +2,8 @@ import { useState, useMemo, useEffect } from 'react';
 import { Home } from './pages';
 import { lightTheme, darkTheme } from './theme';
 import './App.css';
-import { createTheme, ThemeProvider } from '@material-ui/core';
+import { createTheme, ThemeProvider, CssBaseline } from '@material-ui/core';
+
 import ThemeContext from './context/Context';
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -47,6 +48,7 @@ function App() {
     <>
       <ThemeContext.Provider value={{ isDark, toggleDarkMode }}>
         <ThemeProvider theme={memoizedTheme}>
+        <CssBaseline />
           <Home />
         </ThemeProvider>
       </ThemeContext.Provider >
