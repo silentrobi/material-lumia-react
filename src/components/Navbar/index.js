@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Hidden from '@material-ui/core/Hidden';
@@ -10,6 +10,7 @@ import { Button, Link } from '@material-ui/core';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import ThemeContext from '../../context/Context';
+import classNames from 'classnames';
 
 const useStyles = makeStyles((theme) => ({
     menuIcon: {
@@ -38,6 +39,10 @@ const useStyles = makeStyles((theme) => ({
             transition: 'all 0.2s ease-in-out',
             background: theme.palette.common.white
         }
+    },
+    appbar: {
+        background: 'transparent',
+        boxShadow: 'none'
     }
 }));
 
@@ -45,9 +50,19 @@ const Navbar = (props) => {
     const classes = useStyles();
     const { handleDrawerToggle } = props;
     const { isDark, toggleDarkMode } = useContext(ThemeContext);
+    const [showAppBar, setShowAppBar] = useState(false);
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            window.addEventListener("scroll", () =>
+                setShowAppBar(window.pageYOffset > 100)
+            );
+        }
+    }, []);
+
     return (
         <>
-            <AppBar position="fixed" color="default">
+            <AppBar position="fixed" color="inherit"  className={classNames({ [classes.appbar]: !showAppBar })}>
                 <Toolbar>
                     <Typography variant="h4" color="textPrimary" className={classes.title}>
                         Lumia

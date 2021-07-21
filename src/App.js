@@ -47,8 +47,9 @@ function App() {
   return (
     <>
       <ThemeContext.Provider value={{ isDark, toggleDarkMode }}>
-        <ThemeProvider theme={memoizedTheme}>
         <CssBaseline />
+        <ThemeProvider theme={memoizedTheme}>
+
           <Home />
         </ThemeProvider>
       </ThemeContext.Provider >
