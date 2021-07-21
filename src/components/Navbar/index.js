@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     buttonLink: {
+        margin: theme.spacing(1, 1.5),
         borderRadius: theme.spacing(6),
         '&:hover': {
             transition: 'all 0.2s ease-in-out',
@@ -43,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
     appbar: {
         background: 'transparent',
         boxShadow: 'none'
+    },
+    initAppbarElement:{
+       color: theme.palette.common.white
     }
 }));
 
@@ -64,12 +68,12 @@ const Navbar = (props) => {
         <>
             <AppBar position="fixed" color="inherit"  className={classNames({ [classes.appbar]: !showAppBar })}>
                 <Toolbar>
-                    <Typography variant="h4" color="textPrimary" className={classes.title}>
+                    <Typography variant="h4" color="textPrimary" className={classNames(classes.title, {[classes.initAppbarElement]: !showAppBar })}>
                         Lumia
                     </Typography>
                     <Hidden xsDown={true}>
                         {['About', 'Discover', 'Services', 'Sign Up'].map((text) => (
-                            <Link color='textPrimary' underline='none' className={classes.link} >
+                            <Link color='textPrimary' underline='none' className={classNames(classes.link, {[classes.initAppbarElement]: !showAppBar })}>
                                 {text}
                             </Link>
                         ))}
