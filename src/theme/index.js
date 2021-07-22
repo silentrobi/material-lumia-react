@@ -34,8 +34,8 @@ const darkTheme = createTheme({
             main: '#fffff'
         },
         background: {
-            default: '#424242',
-            paper: '#263238'
+            default: '#263238',
+            paper: '#1C2833'
         },
         custom:{
             white: '#fff'
