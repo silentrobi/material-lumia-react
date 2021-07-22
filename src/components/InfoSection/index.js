@@ -2,6 +2,7 @@ import { Grid, Typography, Button, makeStyles, Container, Box, ThemeProvider } f
 import React, { useContext, useEffect } from 'react';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import ThemeContext from '../../context/Context';
 const useStyles = makeStyles((theme) => ({
     container: {
         background: theme.palette.background.paper
@@ -54,12 +55,12 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 const InfoSection = (props) => {
-
+    const isDark = useContext(ThemeContext);
     const { id, button, topLine, headline, description, image, alt } = props;
     const classes = useStyles();
     useEffect(() => {
-        Aos.init({ duration: 2000 })
-    }, []);
+        Aos.init({ once:true, duration: 2000 })
+    }, [isDark]);
 
     return (
         <>
@@ -83,7 +84,7 @@ const InfoSection = (props) => {
                 </Grid>
             </Container>
         </>
-    )
+    );
 }
 
 export default InfoSection;

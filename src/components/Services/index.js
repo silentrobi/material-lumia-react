@@ -1,10 +1,11 @@
 import { Grid, Box, Typography, Container, CardMedia } from '@material-ui/core';
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import imgFive from '../../images/svg-5.svg';
 import imgOne from '../../images/svg-1.svg';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import ThemeContext from '../../context/Context';
 const useStyles = makeStyles((theme) => ({
     root: {
         background: theme.palette.background.paper,
@@ -55,15 +56,17 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 const Services = () => {
+    const isDark = useContext(ThemeContext);
     const classes = useStyles();
     useEffect(() => {
-        Aos.init({ duration: 2000 })
-    }, []);
+        
+        Aos.init({once: true, duration: 2000 })
+    }, [isDark]);
 
     return (
         <>
             <Container maxWidth='xl' className={classes.root}>
-                <Box data-aos='fade-right'>
+                <Box data-aos-once='fade-right'>
                     <Typography variant="h1" color="textPrimary" className={classes.sectionHeading}>Our Services</Typography>
                 </Box>
                 <Grid container spacing={3} justifyContent='center' alignItems='center' >
