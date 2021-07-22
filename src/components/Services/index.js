@@ -77,8 +77,8 @@ const Services = () => {
                                 alt="benifits"
                                 className={classes.img}
                             />
-                            <Typography variant='h4' className={classes.headline}>Reduce Expenses</Typography>
-                            <Typography variant='subtitle2' className={classes.description}>We help reduce your fees and
+                            <Typography variant='h4' color='textPrimary' className={classes.headline}>Reduce Expenses</Typography>
+                            <Typography variant='subtitle2' color='textPrimary' className={classes.description}>We help reduce your fees and
                                 increase your overall revenue.</Typography>
                         </Box>
                     </Grid>
@@ -89,8 +89,8 @@ const Services = () => {
                                 alt="benifits"
                                 className={classes.img}
                             />
-                            <Typography variant='h4' className={classes.headline}>Premium Benifits</Typography>
-                            <Typography variant='subtitle2' className={classes.description}>Unlock our special membership card
+                            <Typography variant='h4' color='textPrimary' className={classes.headline}>Premium Benifits</Typography>
+                            <Typography variant='subtitle2' color='textPrimary' className={classes.description}>Unlock our special membership card
                                 that returns 5% cash back.</Typography>
                         </Box>
                     </Grid>
@@ -101,8 +101,8 @@ const Services = () => {
                                 alt="benifits"
                                 className={classes.img}
                             />
-                            <Typography variant='h4' className={classes.headline}>Premium Benifits</Typography>
-                            <Typography variant='subtitle2' className={classes.description}>Unlock our special membership card
+                            <Typography variant='h4' color='textPrimary' className={classes.headline}>Premium Benifits</Typography>
+                            <Typography variant='subtitle2' color='textPrimary' className={classes.description}>Unlock our special membership card
                                 that returns 5% cash back.</Typography>
                         </Box>
                     </Grid>
