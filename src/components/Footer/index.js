@@ -9,17 +9,14 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 const useStyles = makeStyles((theme) => ({
     root: {
         background: theme.palette.background.default,
+        height: '100%'
     },
     img: {
         width: '100%',
         height: '30vh',
         objectFit: 'contain'
     },
-    containerItem: {
-
-    },
     card: {
-        margin: 'auto',
         textAlign: 'center',
         display: 'flex',
         flexDirection: 'column',
@@ -27,9 +24,14 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(2),
         flexGrow: 1
     },
-    container: {
-        margin: theme.spacing(10),
-
+    footterBottom: {
+        textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        paddingBottom: theme.spacing(2)
     },
     sectionHeading: {
         margin: theme.spacing(2),
@@ -45,6 +47,10 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: theme.spacing(1),
         lineHeight: 1.3,
         fontWeight: 'normal',
+    },
+    title: {
+        cursor: 'pointer',
+        fontWeight: 'bold'
     },
     link: {
         textDecoration: 'none',
@@ -76,23 +82,23 @@ const Footer = () => {
                     </Grid>
                 ))}
             </Grid>
-            <Box className={classes.card}>
-                <Typography variant='h4' color='textPrimary'>Lumia</Typography>
-                <Typography variant='h4' color='textPrimary' >
+            <Box className={classes.footterBottom}>
+                <Typography variant='h5' className={classes.title} color='textPrimary'>Lumia</Typography>
+                <Typography variant='subtitle2' style={{ fontWeight: 'normal' }} color='textPrimary' >
                     lumia &copy; 2021 All right reserved.
                 </Typography>
                 <Box>
-                    <Link href='#' color='inherit'>
-                        <FacebookIcon  style={{color: '#4267B2'}}/>
+                    <Link href='#' color='inherit' >
+                        <FacebookIcon style={{ color: '#4267B2' }} />
                     </Link>
-                    <Link href='#' color='inherit'>
-                        <YouTubeIcon />
+                    <Link href='#' style={{ paddingLeft: '8px' }} color='inherit'>
+                        <YouTubeIcon style={{ color: '#FF0000' }} />
                     </Link>
-                    <Link href='#' color='inherit'>
-                        <TwitterIcon />
+                    <Link href='#' style={{ paddingLeft: '8px' }} color='inherit'>
+                        <TwitterIcon style={{ color: '#1DA1F2' }} />
                     </Link>
-                    <Link href='#' color='inherit'>
-                        <InstagramIcon />
+                    <Link href='#' style={{ paddingLeft: '8px' }} color='inherit'>
+                        <InstagramIcon style={{ color: '#F77737' }} />
                     </Link>
                 </Box>
             </Box>
