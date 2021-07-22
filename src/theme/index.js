@@ -13,7 +13,7 @@ const lightTheme = createTheme({
             white: '#fff'
         },
         background: {
-            default: '#fff',
+            default: 'rgb(244, 246, 248)',
             paper: '#fff'
         },
         type: 'light',
@@ -34,7 +34,7 @@ const darkTheme = createTheme({
             main: '#fffff'
         },
         background: {
-            default: '#000',
+            default: 'rgb(244,248,247)',
             paper: '#000'
         },
         custom:{

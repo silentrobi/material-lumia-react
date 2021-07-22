@@ -47,9 +47,6 @@ const useStyles = makeStyles((theme) => ({
     },
     initAppbarElement:{
        color: theme.palette.common.white
-    },
-    t:{
-        backgroundColor: '#fff'
     }
 }));
 

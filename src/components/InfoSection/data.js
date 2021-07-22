@@ -21,8 +21,8 @@ export const discoverHomeObj = {
     you need is an internet connection and a phone or computer.',
     image: imgTwo,
     alt: 'Piggybank',
-    bgColor: '#fff',
-    textColor: '#000'
+    // bgColor: '#fff',
+    // textColor: '#000'
 };
 
 export const signupHomeObj = {
@@ -34,6 +34,6 @@ export const signupHomeObj = {
     All you need to do is add your information and you\'re ready to go.',
     image: imgFour,
     alt: 'signup',
-    bgColor: '#fff',
-    textColor: '#000'
+    // bgColor: '#fff',
+    // textColor: '#000'
 };

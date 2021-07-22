@@ -1,12 +1,15 @@
 import { Grid, Box, Typography, Container, CardMedia } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import imgFive from '../../images/svg-5.svg';
 import imgOne from '../../images/svg-1.svg';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 const useStyles = makeStyles((theme) => ({
     root: {
-        background: '#000',
-        flexGrow: 1
+        background: theme.palette.background.paper,
+        flexGrow: 1,
+        padding: theme.spacing(6)
     },
     item: {
 
@@ -29,11 +32,18 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '8px',
         boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)',
         background: '#fff',
-        padding: theme.spacing(2)
+        padding: theme.spacing(2),
+        backgroundColor: theme.palette.background.default
     },
     container: {
         margin: theme.spacing(10),
 
+    },
+    sectionHeading: {
+        margin: theme.spacing(2),
+        padding: theme.spacing(2),
+        fontWeight: 'bold',
+        textAlign: 'center'
     },
     headline: {
         paddingTop: theme.spacing(2),
@@ -46,15 +56,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Services = () => {
     const classes = useStyles();
+    useEffect(() => {
+        Aos.init({ duration: 2000 })
+    }, []);
+
     return (
         <>
             <Container maxWidth='xl' className={classes.root}>
-                <Box>
-                    <Typography variant="h1" style={{ padding: '16px', fontWeight: 'bold', textAlign: 'center', color: '#fff' }}>Our Services</Typography>
+                <Box data-aos='fade-right'>
+                    <Typography variant="h1" color="textPrimary" className={classes.sectionHeading}>Our Services</Typography>
                 </Box>
-                <Grid container spacing={3} justifyContent='center' >
+                <Grid container spacing={3} justifyContent='center' alignItems='center' >
                     <Grid item xs={12} sm={6} md={3}>
-                        <Box className={classes.card}>
+                        <Box data-aos='fade-up' className={classes.card}>
                             <img
                                 src={imgOne}
                                 alt="benifits"
@@ -66,7 +80,7 @@ const Services = () => {
                         </Box>
                     </Grid>
                     <Grid item xs={12} sm={6} md={3}>
-                        <Box className={classes.card}>
+                        <Box data-aos='fade-down' className={classes.card}>
                             <img
                                 src={imgFive}
                                 alt="benifits"
@@ -78,7 +92,7 @@ const Services = () => {
                         </Box>
                     </Grid>
                     <Grid item xs={12} sm={6} md={3}>
-                        <Box className={classes.card}>
+                        <Box data-aos='fade-left' className={classes.card}>
                             <img
                                 src={imgFive}
                                 alt="benifits"
