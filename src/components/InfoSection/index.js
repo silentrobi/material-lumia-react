@@ -5,7 +5,8 @@ import 'aos/dist/aos.css';
 import ThemeContext from '../../context/Context';
 const useStyles = makeStyles((theme) => ({
     container: {
-        background: theme.palette.background.paper
+        background: theme.palette.background.paper,
+        overflowX: 'hidden'
     },
     textSection: {
         padding: theme.spacing(0, 3),

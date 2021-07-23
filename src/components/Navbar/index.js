@@ -91,7 +91,7 @@ const Navbar = (props) => {
                     </IconButton>
                     <IconButton
                         edge="start"
-                        className={classes.menuIcon}
+                        className={classNames(classes.menuIcon, {[classes.initAppbarElement]: !showAppBar})} 
                         aria-label="menu"
                         onClick={handleDrawerToggle}>
                         <MenuIcon color="inherit"/>

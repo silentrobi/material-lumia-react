@@ -10,7 +10,8 @@ const useStyles = makeStyles((theme) => ({
     root: {
         background: theme.palette.background.paper,
         flexGrow: 1,
-        padding: theme.spacing(6)
+        padding: theme.spacing(6),
+        overflowX: 'hidden'
     },
     item: {
 
@@ -66,7 +67,7 @@ const Services = () => {
     return (
         <>
             <Container maxWidth='xl' className={classes.root}>
-                <Box data-aos-once='fade-right'>
+                <Box data-aos='fade-right'>
                     <Typography variant="h1" color="textPrimary" className={classes.sectionHeading}>Our Services</Typography>
                 </Box>
                 <Grid container spacing={3} justifyContent='center' alignItems='center' >
