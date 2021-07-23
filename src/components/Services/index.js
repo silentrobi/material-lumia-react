@@ -13,16 +13,10 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(6),
         overflowX: 'hidden'
     },
-    item: {
-
-    },
     img: {
         width: '100%',
         height: '30vh',
         objectFit: 'contain'
-    },
-    containerItem: {
-
     },
     card: {
         maxWidth: '300px',
