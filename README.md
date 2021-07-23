@@ -13,6 +13,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 - On scroll animation
 - Fully responsive
+- Light and Dark Mode
 
 ## Production URL
 https://lumia-material.herokuapp.com/
