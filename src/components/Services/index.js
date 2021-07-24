@@ -6,13 +6,14 @@ import imgOne from '../../images/svg-1.svg';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import ThemeContext from '../../context/Context';
+import serviceData from './data';
 const useStyles = makeStyles((theme) => ({
     root: {
         background: theme.palette.background.paper,
         flexGrow: 1,
         padding: theme.spacing(6),
-        overflowX: 'hidden'
-    },
+        overflowX: 'hidden',
+    },  
     img: {
         width: '100%',
         height: '30vh',
@@ -29,7 +30,8 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)',
         background: '#fff',
         padding: theme.spacing(2),
-        backgroundColor: theme.palette.background.default
+        backgroundColor: theme.palette.background.default,
+        marginBottom: theme.spacing(3)
     },
     container: {
         margin: theme.spacing(10),
@@ -65,42 +67,18 @@ const Services = () => {
                     <Typography variant="h1" color="textPrimary" className={classes.sectionHeading}>Our Services</Typography>
                 </Box>
                 <Grid container spacing={3} justifyContent='center' alignItems='center' >
-                    <Grid item xs={12} sm={6} md={3}>
-                        <Box data-aos='fade-up' className={classes.card}>
+                    {serviceData.map((data) => <Grid item xs={12} sm={6} md={3}>
+                        <Box data-aos={data.animation} className={classes.card}>
                             <img
-                                src={imgOne}
+                                src={data.image}
                                 alt="benifits"
                                 className={classes.img}
                             />
-                            <Typography variant='h4' color='textPrimary' className={classes.headline}>Reduce Expenses</Typography>
-                            <Typography variant='subtitle2' color='textPrimary' className={classes.description}>We help reduce your fees and
-                                increase your overall revenue.</Typography>
+                            <Typography variant='h4' color='textPrimary' className={classes.headline}>{data.headling}</Typography>
+                            <Typography variant='subtitle2' color='textPrimary' className={classes.description}>{data.description}</Typography>
                         </Box>
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
-                        <Box data-aos='fade-down' className={classes.card}>
-                            <img
-                                src={imgFive}
-                                alt="benifits"
-                                className={classes.img}
-                            />
-                            <Typography variant='h4' color='textPrimary' className={classes.headline}>Premium Benifits</Typography>
-                            <Typography variant='subtitle2' color='textPrimary' className={classes.description}>Unlock our special membership card
-                                that returns 5% cash back.</Typography>
-                        </Box>
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
-                        <Box data-aos='fade-left' className={classes.card}>
-                            <img
-                                src={imgFive}
-                                alt="benifits"
-                                className={classes.img}
-                            />
-                            <Typography variant='h4' color='textPrimary' className={classes.headline}>Premium Benifits</Typography>
-                            <Typography variant='subtitle2' color='textPrimary' className={classes.description}>Unlock our special membership card
-                                that returns 5% cash back.</Typography>
-                        </Box>
-                    </Grid>
+                    </Grid>)}
+
                 </Grid>
             </Container>
         </>
