@@ -26,10 +26,11 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'bold'
     },
     link: {
-        margin: theme.spacing(1, 1.5),
+        padding: theme.spacing(2.6, 1.5),
         textDecoration: 'none',
         fontFamily: theme.typography.fontFamily,
         textAlign: 'center',
+        height: '100%',
         cursor: 'pointer',
         underline: 'none',
         color: theme.palette.text.primary,
@@ -38,7 +39,8 @@ const useStyles = makeStyles((theme) => ({
         },
         '&.active': {
             color: theme.palette.primary.main,
-            borderBottom: `3px solid ${theme.palette.primary.main}`
+            borderBottom: `3px solid ${theme.palette.primary.main}`,
+            bottom: 0,
         }
     },
     buttonLink: {
@@ -63,6 +65,7 @@ const Navbar = (props) => {
     const { handleDrawerToggle } = props;
     const { isDark, toggleDarkMode } = useContext(ThemeContext);
     const [showAppBar, setShowAppBar] = useState(false);
+    const [scrollOffset, setScrollOffset] = useState(-60);
 
     const scrollToTop = () => {
         scroll.scrollToTop();
@@ -75,6 +78,16 @@ const Navbar = (props) => {
         }
     }, []);
 
+    useEffect(() => {
+        console.log(window.innerWidth);
+        if (window.innerWidth >= 1024) {
+
+            setScrollOffset(-50);
+        }
+        else {
+            setScrollOffset(-60);
+        }
+    }, [window.innerWidth])
     return (
         <>
             <AppBar position="fixed" color="inherit" className={classNames({ [classes.appbar]: !showAppBar })}>
@@ -89,9 +102,8 @@ const Navbar = (props) => {
                                 to={text.replace(/\s+/g, '').toLowerCase()}
                                 smooth={true}
                                 spy={true}
-                                offset={-63}
-                                duration={500}
-                                onSetActive={() => console.log(text)}
+                                offset={scrollOffset}
+                                onSetActive={() => console.log(scrollOffset)}
                                 className={classNames(classes.link, { [classes.initAppbarElement]: !showAppBar })}>
                                 {text}
                             </LinkS>

@@ -6,7 +6,8 @@ import ThemeContext from '../../context/Context';
 const useStyles = makeStyles((theme) => ({
     container: {
         background: theme.palette.background.paper,
-        overflowX: 'hidden'
+        overflowX: 'hidden',
+        padding: theme.spacing(6)
     },
     textSection: {
         padding: theme.spacing(0, 3),
@@ -64,8 +65,8 @@ const InfoSection = (props) => {
     }, [isDark]);
 
     return (
-        <>
-            <Container id={id} maxWidth='xl' className={classes.container}>
+        <div id={id}>
+            <Container maxWidth='xl' className={classes.container}>
                 <Grid container>
                     <Grid item sm={12} md={6}>
                         <Box data-aos='fade-up' className={classes.item}>
@@ -84,7 +85,7 @@ const InfoSection = (props) => {
                     </Grid>
                 </Grid>
             </Container>
-        </>
+        </div>
     );
 }
 

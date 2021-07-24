@@ -62,8 +62,8 @@ const Services = () => {
 
     return (
         <>
-            <Container id='services' maxWidth='xl' className={classes.root}>
-                <Box data-aos='fade-right'>
+            <Container  id='services' maxWidth='xl' className={classes.root}>
+                <Box data-aos='fade-right'  >
                     <Typography variant="h1" color="textPrimary" className={classes.sectionHeading}>Our Services</Typography>
                 </Box>
                 <Grid container spacing={3} justifyContent='center' alignItems='center' >
