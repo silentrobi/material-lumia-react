@@ -3,7 +3,7 @@ import { Home } from './pages';
 import { lightTheme, darkTheme } from './theme';
 import './App.css';
 import { createTheme, ThemeProvider, CssBaseline } from '@material-ui/core';
-
+import { BrowserRouter as Router } from 'react-router-dom';
 import ThemeContext from './context/Context';
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -49,8 +49,9 @@ function App() {
       <ThemeContext.Provider value={{ isDark, toggleDarkMode }}>
         <CssBaseline />
         <ThemeProvider theme={memoizedTheme}>
-
-          <Home />
+          <Router>
+            <Home />
+          </Router>
         </ThemeProvider>
       </ThemeContext.Provider >
     </>

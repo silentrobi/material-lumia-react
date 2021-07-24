@@ -1,4 +1,4 @@
-import { Grid, Typography, Button, makeStyles, Container, Box, ThemeProvider } from '@material-ui/core';
+import { Grid, Typography, Button, makeStyles, styled, Container, Box, ThemeProvider } from '@material-ui/core';
 import React, { useContext, useEffect } from 'react';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
@@ -65,7 +65,7 @@ const InfoSection = (props) => {
 
     return (
         <>
-            <Container maxWidth='xl' className={classes.container}>
+            <Container id={id} maxWidth='xl' className={classes.container}>
                 <Grid container>
                     <Grid item sm={12} md={6}>
                         <Box data-aos='fade-up' className={classes.item}>

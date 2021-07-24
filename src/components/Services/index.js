@@ -54,13 +54,13 @@ const Services = () => {
     const isDark = useContext(ThemeContext);
     const classes = useStyles();
     useEffect(() => {
-        
-        Aos.init({once: true, duration: 2000 })
+
+        Aos.init({ once: true, duration: 2000 })
     }, [isDark]);
 
     return (
         <>
-            <Container maxWidth='xl' className={classes.root}>
+            <Container id='services' maxWidth='xl' className={classes.root}>
                 <Box data-aos='fade-right'>
                     <Typography variant="h1" color="textPrimary" className={classes.sectionHeading}>Our Services</Typography>
                 </Box>

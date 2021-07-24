@@ -8,6 +8,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
 import { IconButton, ListItemText } from '@material-ui/core';
 import { Button, Link } from '@material-ui/core';
+import { Link as LinkS } from 'react-scroll';
 const drawerWidth = '100%';
 
 const useStyles = makeStyles((theme) => ({
@@ -80,8 +81,16 @@ const Sidebar = (props) => {
                     </IconButton>
                 </div>
                 {['About', 'Discover', 'Services', 'Sign Up'].map((text) => (
-                    <ListItem className={classes.link} key={text} component='a' href="#">
-                        <ListItemText color='textPrimary'> {text}</ListItemText>
+                    <ListItem className={classes.link} key={text} >
+                        <ListItemText color='textPrimary'>
+                            <LinkS
+                                activeClass='active'
+                                spy={true}
+                                to={text.replace(/\s+/g, '').toLowerCase()}
+                                offset={-56}
+                                onClick={handleDrawerToggle}> {text}
+                            </LinkS>
+                            </ListItemText>
                     </ListItem>
                 ))}
                 <ListItem className={classes.link}>
