@@ -78,16 +78,6 @@ const Navbar = (props) => {
         }
     }, []);
 
-    useEffect(() => {
-        console.log(window.innerWidth);
-        if (window.innerWidth >= 1024) {
-
-            setScrollOffset(-50);
-        }
-        else {
-            setScrollOffset(-60);
-        }
-    }, [window.innerWidth])
     return (
         <>
             <AppBar position="fixed" color="inherit" className={classNames({ [classes.appbar]: !showAppBar })}>
@@ -102,8 +92,7 @@ const Navbar = (props) => {
                                 to={text.replace(/\s+/g, '').toLowerCase()}
                                 smooth={true}
                                 spy={true}
-                                offset={scrollOffset}
-                                onSetActive={() => console.log(scrollOffset)}
+                                offset={window.innerWidth >= 1024 ? -50 : -60}
                                 className={classNames(classes.link, { [classes.initAppbarElement]: !showAppBar })}>
                                 {text}
                             </LinkS>
