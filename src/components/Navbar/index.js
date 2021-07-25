@@ -1,14 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { makeStyles, styled } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Hidden from '@material-ui/core/Hidden';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import { Button, } from '@material-ui/core';
-import { Link as LinkS, animateScroll as scroll } from 'react-scroll';
-import { Link as LinkR } from 'react-router-dom';
+import { Button, Link } from '@material-ui/core';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import ThemeContext from '../../context/Context';
@@ -32,16 +30,18 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         height: '100%',
         cursor: 'pointer',
-        underline: 'none',
         color: theme.palette.text.primary,
         '&:hover': {
             color: theme.palette.primary.main
         },
-        '&.active': {
+        '&:active': {
             color: theme.palette.primary.main,
             borderBottom: `3px solid ${theme.palette.primary.main}`,
-            bottom: 0,
-        }
+        },
+    },
+    isActive: {
+        color: theme.palette.primary.main,
+        borderBottom: `3px solid ${theme.palette.primary.main}`,
     },
     buttonLink: {
         margin: theme.spacing(1, 1.5),
@@ -65,11 +65,13 @@ const Navbar = (props) => {
     const { handleDrawerToggle } = props;
     const { isDark, toggleDarkMode } = useContext(ThemeContext);
     const [showAppBar, setShowAppBar] = useState(false);
-    const [scrollOffset, setScrollOffset] = useState(-60);
-
+    const [currentBookmarkId, setCurrentBookmarkId] = useState(-1);
+    
     const scrollToTop = () => {
-        scroll.scrollToTop();
+        window.scrollTo(0, 0);
+        setCurrentBookmarkId(-1);
     }
+
     useEffect(() => {
         if (typeof window !== "undefined") {
             window.addEventListener("scroll", () =>
@@ -86,16 +88,16 @@ const Navbar = (props) => {
                         Lumia
                     </Typography>
                     <Hidden xsDown={true}>
-                        {['About', 'Discover', 'Services', 'Sign Up'].map((text) => (
-                            <LinkS
-                                activeClass="active"
-                                to={text.replace(/\s+/g, '').toLowerCase()}
-                                smooth={true}
-                                spy={true}
-                                offset={window.innerWidth >= 1024 ? -50 : -60}
-                                className={classNames(classes.link, { [classes.initAppbarElement]: !showAppBar })}>
+                        {['About', 'Discover', 'Services', 'Sign Up'].map((text, i) => (
+
+                            <Link
+                                key={i}
+                                underline='none'
+                                href={`#${text.replace(/\s+/g, '').toLowerCase()}`}
+                                onClick={() => setCurrentBookmarkId(i)}
+                                className={classNames(classes.link, { [classes.isActive]: i == currentBookmarkId, [classes.initAppbarElement]: !showAppBar })}>
                                 {text}
-                            </LinkS>
+                            </Link>
                         ))}
                         <Button variant='contained' color='primary' className={classes.buttonLink}>
                             Sign In

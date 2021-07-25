@@ -6,6 +6,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
+import { animateScroll as scroll } from 'react-scroll';
 const useStyles = makeStyles((theme) => ({
     root: {
         background: theme.palette.background.default,
@@ -50,7 +51,8 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         cursor: 'pointer',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textDecoration: 'none'
     },
     link: {
         textDecoration: 'none',
@@ -65,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Footer = () => {
     const classes = useStyles();
+    
     return (
         <Container maxWidth='xl' className={classes.root}>
             <Grid container justifyContent='space-around'>
@@ -83,7 +86,7 @@ const Footer = () => {
                 ))}
             </Grid>
             <Box className={classes.footterBottom}>
-                <Typography variant='h5' className={classes.title} color='textPrimary'>Lumia</Typography>
+                <Typography variant='h5' component='a' className={classes.title} href='#' color='textPrimary'>Lumia</Typography>
                 <Typography variant='subtitle2' style={{ fontWeight: 'normal' }} color='textPrimary' >
                     lumia &copy; 2021 All right reserved.
                 </Typography>
