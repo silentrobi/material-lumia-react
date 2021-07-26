@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
@@ -8,7 +8,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
 import { IconButton, ListItemText } from '@material-ui/core';
 import { Button, Link } from '@material-ui/core';
-import { Link as LinkS } from 'react-scroll';
+import classNames from 'classnames';
 const drawerWidth = '100%';
 
 const useStyles = makeStyles((theme) => ({
@@ -49,6 +49,9 @@ const useStyles = makeStyles((theme) => ({
             color: theme.palette.primary.main
         }
     },
+    isActive: {
+        color: theme.palette.primary.main
+    },
     buttonLink: {
         textAlign: 'center',
         borderRadius: theme.spacing(6),
@@ -69,6 +72,13 @@ const Sidebar = (props) => {
     const classes = useStyles();
     const theme = useTheme();
 
+    const [currentBookmarkId, setCurrentBookmarkId] = useState(-1);
+
+    const scrollToTop = () => {
+        window.scrollTo(0, 0);
+        setCurrentBookmarkId(-1);
+    }
+
     const drawer = (
         <>
             <List>
@@ -80,17 +90,19 @@ const Sidebar = (props) => {
                         <CloseIcon className={classes.closeButton} />
                     </IconButton>
                 </div>
-                {['About', 'Discover', 'Services', 'Sign Up'].map((text) => (
+                {['About', 'Discover', 'Services', 'Sign Up'].map((text, i) => (
                     <ListItem className={classes.link} key={text} >
                         <ListItemText color='textPrimary'>
-                            <LinkS
-                                activeClass='active'
-                                spy={true}
-                                to={text.replace(/\s+/g, '').toLowerCase()}
-                                offset={-56}
-                                onClick={handleDrawerToggle}> {text}
-                            </LinkS>
-                            </ListItemText>
+                            <Link
+                                underline='none'
+                                key={i}
+                                href={`#${text.replace(/\s+/g, '').toLowerCase()}`}
+                                onClick={() => setCurrentBookmarkId(i)}
+                                className={classNames(classes.link, { [classes.isActive]: i == currentBookmarkId })}
+                                onClick={handleDrawerToggle}
+                                > {text}
+                            </Link>
+                        </ListItemText>
                     </ListItem>
                 ))}
                 <ListItem className={classes.link}>

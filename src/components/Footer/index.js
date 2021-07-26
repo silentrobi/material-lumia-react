@@ -6,7 +6,6 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import { animateScroll as scroll } from 'react-scroll';
 const useStyles = makeStyles((theme) => ({
     root: {
         background: theme.palette.background.default,
